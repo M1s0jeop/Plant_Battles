@@ -1,197 +1,198 @@
 {
   "name": "PlantBattles",
   "tree": {
-    "": "DataModel",
+    "$className": "DataModel",
     "ServerScriptService": {
-      "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/server"
+      "$path": "src/server"
     },
     "ReplicatedStorage": {
-      "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/shared",
+      "$path": "src/shared",
       "Abilities": {
-        "": "Folder",
+        "$className": "Folder",
         "AcidSpit": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "BananaSpawn": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "BoomerangReturn": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "BoomerangThrow": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CannonAim": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CannonFire": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CannonStart": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CannonStop": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CherryBarrage": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CoconutShield": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CoconutSlam": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "CoconutSlamCombo": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FireGrapple": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FlashDetonate": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FlashThrow": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FlytrapDig": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FlytrapEmerge": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FlytrapHeal": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FlytrapSpit": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "FlytrapSummon": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "GrappleDecision": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "GrappleHit": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "KetchupSlick": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "KiwiDisengage": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "MushroomCloud": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "OnionBreath": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "OnionStink": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "PeelSlip": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "PeelThrow": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "PomegranateThrow": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "PullDummy": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "RoseThorn": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "SporeGuillotine": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "SpringOnionBounce": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "SunflowerAim": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "SunflowerOrbs": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "SunflowerStart": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "SunflowerStop": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "TomatoSplat": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "TomatoThrow": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "VineCage": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "VineThicket": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "WalnutWall": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "WatermelonHit": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "WatermelonStart": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         }
       },
       "PackRemotes": {
-        "": "Folder",
+        "$className": "Folder",
         "BuyPack": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "ClaimReward": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "OpenPack": {
-          "": "RemoteFunction"
+          "$className": "RemoteFunction"
         },
         "ShowSpinner": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         }
       },
       "GardenRemotes": {
-        "": "Folder",
+        "$className": "Folder",
         "ClaimGarden": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "GardenSync": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "PlantSeed": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "RequestGarden": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         },
         "WaterPlant": {
-          "": "RemoteEvent"
+          "$className": "RemoteEvent"
         }
       }
     },
     "StarterPlayer": {
       "StarterPlayerScripts": {
-        "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/client/StarterPlayerScripts"
+        "$path": "src/client/StarterPlayerScripts"
       },
       "StarterCharacterScripts": {
-        "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/client/StarterCharacterScripts"
+        "$path": "src/client/StarterCharacterScripts"
       }
     },
     "StarterGui": {
       "NatureHUD": {
         "WindowManager": {
-          "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/gui/NatureHUD/WindowManager.client.luau"
-        }
+          "$path": "src/gui/NatureHUD/WindowManager.client.luau"
+        },
+        "$className": "ScreenGui"
       }
     }
   }
