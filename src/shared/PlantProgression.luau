@@ -131,7 +131,7 @@ M.PLANTS = {
 		icon = "🍉", rarity = "Legendary", radius = 3.6,
 		color = Color3.fromRGB(90, 190, 90),
 		stageTimes = { 0, 10800, 36000 }, -- 3h for Stage 2, 10h for Stage 3
-		abilities = { "watermelon_slam" },
+		abilities = { "watermelon_slam", "rolling_melon" },
 	},
 	["Sunflower"] = {
 		icon = "🌻", rarity = "Legendary", radius = 3.2,

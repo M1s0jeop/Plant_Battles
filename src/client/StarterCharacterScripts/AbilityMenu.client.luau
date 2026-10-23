@@ -138,6 +138,15 @@ local ALL_ABILITIES = {
         plant = "Watermelon",
     },
     {
+        id = "rolling_melon",
+        name = "Rolling Melon",
+        icon = "🍉",
+        description = "Transform into a giant rolling watermelon! You slowly build up massive speed while steering becomes heavier and harder to turn. Ramming an enemy splashes red juice everywhere, deals heavy speed-scaling damage, and launches them high into the air. On hitting someone or a wall, you perform a constant rebound jump up and back.",
+        color = Color3.fromRGB(65, 190, 85),
+        cooldown = 9,
+        plant = "Watermelon",
+    },
+    {
         id = "tomato",
         name = "Tomato",
         icon = "🍅",

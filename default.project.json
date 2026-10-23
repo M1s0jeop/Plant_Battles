@@ -117,6 +117,15 @@
         "PullDummy": {
           "$className": "RemoteEvent"
         },
+        "RollingMelonHit": {
+          "$className": "RemoteEvent"
+        },
+        "RollingMelonStart": {
+          "$className": "RemoteEvent"
+        },
+        "RollingMelonStop": {
+          "$className": "RemoteEvent"
+        },
         "RoseThorn": {
           "$className": "RemoteEvent"
         },
