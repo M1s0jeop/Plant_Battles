@@ -1,0 +1,15 @@
+# Roblox Studio / Rojo lock files
+*.rbxl.lock
+*.rbxlx.lock
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Build artifacts
+*.rbxl
+*.rbxm
+*.rbxmx

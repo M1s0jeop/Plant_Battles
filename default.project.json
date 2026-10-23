@@ -1,0 +1,198 @@
+{
+  "name": "PlantBattles",
+  "tree": {
+    "": "DataModel",
+    "ServerScriptService": {
+      "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/server"
+    },
+    "ReplicatedStorage": {
+      "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/shared",
+      "Abilities": {
+        "": "Folder",
+        "AcidSpit": {
+          "": "RemoteEvent"
+        },
+        "BananaSpawn": {
+          "": "RemoteEvent"
+        },
+        "BoomerangReturn": {
+          "": "RemoteEvent"
+        },
+        "BoomerangThrow": {
+          "": "RemoteEvent"
+        },
+        "CannonAim": {
+          "": "RemoteEvent"
+        },
+        "CannonFire": {
+          "": "RemoteEvent"
+        },
+        "CannonStart": {
+          "": "RemoteEvent"
+        },
+        "CannonStop": {
+          "": "RemoteEvent"
+        },
+        "CherryBarrage": {
+          "": "RemoteEvent"
+        },
+        "CoconutShield": {
+          "": "RemoteEvent"
+        },
+        "CoconutSlam": {
+          "": "RemoteEvent"
+        },
+        "CoconutSlamCombo": {
+          "": "RemoteEvent"
+        },
+        "FireGrapple": {
+          "": "RemoteEvent"
+        },
+        "FlashDetonate": {
+          "": "RemoteEvent"
+        },
+        "FlashThrow": {
+          "": "RemoteEvent"
+        },
+        "FlytrapDig": {
+          "": "RemoteEvent"
+        },
+        "FlytrapEmerge": {
+          "": "RemoteEvent"
+        },
+        "FlytrapHeal": {
+          "": "RemoteEvent"
+        },
+        "FlytrapSpit": {
+          "": "RemoteEvent"
+        },
+        "FlytrapSummon": {
+          "": "RemoteEvent"
+        },
+        "GrappleDecision": {
+          "": "RemoteEvent"
+        },
+        "GrappleHit": {
+          "": "RemoteEvent"
+        },
+        "KetchupSlick": {
+          "": "RemoteEvent"
+        },
+        "KiwiDisengage": {
+          "": "RemoteEvent"
+        },
+        "MushroomCloud": {
+          "": "RemoteEvent"
+        },
+        "OnionBreath": {
+          "": "RemoteEvent"
+        },
+        "OnionStink": {
+          "": "RemoteEvent"
+        },
+        "PeelSlip": {
+          "": "RemoteEvent"
+        },
+        "PeelThrow": {
+          "": "RemoteEvent"
+        },
+        "PomegranateThrow": {
+          "": "RemoteEvent"
+        },
+        "PullDummy": {
+          "": "RemoteEvent"
+        },
+        "RoseThorn": {
+          "": "RemoteEvent"
+        },
+        "SporeGuillotine": {
+          "": "RemoteEvent"
+        },
+        "SpringOnionBounce": {
+          "": "RemoteEvent"
+        },
+        "SunflowerAim": {
+          "": "RemoteEvent"
+        },
+        "SunflowerOrbs": {
+          "": "RemoteEvent"
+        },
+        "SunflowerStart": {
+          "": "RemoteEvent"
+        },
+        "SunflowerStop": {
+          "": "RemoteEvent"
+        },
+        "TomatoSplat": {
+          "": "RemoteEvent"
+        },
+        "TomatoThrow": {
+          "": "RemoteEvent"
+        },
+        "VineCage": {
+          "": "RemoteEvent"
+        },
+        "VineThicket": {
+          "": "RemoteEvent"
+        },
+        "WalnutWall": {
+          "": "RemoteEvent"
+        },
+        "WatermelonHit": {
+          "": "RemoteEvent"
+        },
+        "WatermelonStart": {
+          "": "RemoteEvent"
+        }
+      },
+      "PackRemotes": {
+        "": "Folder",
+        "BuyPack": {
+          "": "RemoteEvent"
+        },
+        "ClaimReward": {
+          "": "RemoteEvent"
+        },
+        "OpenPack": {
+          "": "RemoteFunction"
+        },
+        "ShowSpinner": {
+          "": "RemoteEvent"
+        }
+      },
+      "GardenRemotes": {
+        "": "Folder",
+        "ClaimGarden": {
+          "": "RemoteEvent"
+        },
+        "GardenSync": {
+          "": "RemoteEvent"
+        },
+        "PlantSeed": {
+          "": "RemoteEvent"
+        },
+        "RequestGarden": {
+          "": "RemoteEvent"
+        },
+        "WaterPlant": {
+          "": "RemoteEvent"
+        }
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/client/StarterPlayerScripts"
+      },
+      "StarterCharacterScripts": {
+        "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/client/StarterCharacterScripts"
+      }
+    },
+    "StarterGui": {
+      "NatureHUD": {
+        "WindowManager": {
+          "/Users/michalalexanderrak/.gemini/antigravity/bin /Users/michalalexanderrak/Library/Application Support/Antigravity/bin /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin /pkg/env/global/bin": "src/gui/NatureHUD/WindowManager.client.luau"
+        }
+      }
+    }
+  }
+}
