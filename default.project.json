@@ -81,6 +81,9 @@
         "KiwiDisengage": {
           "$className": "RemoteEvent"
         },
+        "KiwiPopHeal": {
+          "$className": "RemoteEvent"
+        },
         "KiwiSplat": {
           "$className": "RemoteEvent"
         },
@@ -121,6 +124,9 @@
           "$className": "RemoteEvent"
         },
         "SpringOnionBounce": {
+          "$className": "RemoteEvent"
+        },
+        "SummonKiwiOrbit": {
           "$className": "RemoteEvent"
         },
         "SunflowerAim": {

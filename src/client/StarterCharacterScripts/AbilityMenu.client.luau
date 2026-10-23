@@ -102,6 +102,15 @@ local ALL_ABILITIES = {
         plant = "Kiwi Vine",
     },
     {
+        id = "kiwi_orbit",
+        name = "Kiwi Orbit",
+        icon = "🪐",
+        description = "Summon 3 orbiting kiwis that rotate around you for up to 18 seconds. If an enemy projectile hits or comes near a kiwi, it intercepts and destroys the projectile, popping that kiwi and healing you for +20 HP.",
+        color = Color3.fromRGB(130, 205, 50),
+        cooldown = 10,
+        plant = "Kiwi Vine",
+    },
+    {
         id = "spring_onion",
         name = "Spring Onion Bounce",
         icon = "🧅",
