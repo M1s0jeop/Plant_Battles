@@ -81,6 +81,12 @@
         "KiwiDisengage": {
           "$className": "RemoteEvent"
         },
+        "KiwiSplat": {
+          "$className": "RemoteEvent"
+        },
+        "KiwiToss": {
+          "$className": "RemoteEvent"
+        },
         "MushroomCloud": {
           "$className": "RemoteEvent"
         },

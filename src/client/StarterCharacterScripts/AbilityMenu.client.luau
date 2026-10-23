@@ -93,6 +93,15 @@ local ALL_ABILITIES = {
         plant = "Kiwi Vine",
     },
     {
+        id = "kiwi_toss",
+        name = "Kiwi Toss",
+        icon = "🥝",
+        description = "Lob a kiwi at your cursor that grows bigger the longer and further it flies. Enemies hit get their screen smeared with kiwi slices. Allies (or yourself) hit gain a shield that scales with distance travelled and kiwi size.",
+        color = Color3.fromRGB(125, 195, 45),
+        cooldown = 7,
+        plant = "Kiwi Vine",
+    },
+    {
         id = "spring_onion",
         name = "Spring Onion Bounce",
         icon = "🧅",

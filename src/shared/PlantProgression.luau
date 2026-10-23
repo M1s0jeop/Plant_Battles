@@ -79,7 +79,7 @@ M.PLANTS = {
 		icon = "🥝", rarity = "Common", radius = 2.5,
 		color = Color3.fromRGB(140, 180, 70),
 		stageTimes = { 0, 60, 150 },
-		abilities = { "kiwi_disengage" },
+		abilities = { "kiwi_disengage", "kiwi_toss" },
 	},
 
 	-- RARE PLANTS (10 - 45 minutes)
