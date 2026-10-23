@@ -525,6 +525,7 @@ local PLANT_EMOJI = {
     ["Pomegranate Tree"] = "\u{1F4A3}",
     ["Rose Bush"] = "\u{1F339}",
     ["Kiwi"] = "\u{1F95D}",
+    ["Kiwi Vine"] = "\u{1F95D}",
     ["Spring Onion"] = "\u{1F9C5}",
     ["Watermelon"] = "\u{1F349}",
 }
@@ -869,8 +870,72 @@ end)
 
 _G.ToggleAbilityMenu = toggleMenu
 
--- ===== Garden unlock sync: lock/unlock cards based on planted+grown plants =====
+-- ===== Garden unlock sync & Developer Mode Toggle =====
 local RSsvc = game:GetService("ReplicatedStorage")
+local isDevMode = player:GetAttribute("DevMode") == true
+
+local function makeDevButton(parent, pos, anchor, size, zIndex)
+    local btn = Instance.new("TextButton")
+    btn.Name = "DevModeToggleBtn"
+    btn.Size = size
+    btn.Position = pos
+    btn.AnchorPoint = anchor
+    btn.BackgroundColor3 = Color3.fromRGB(32, 36, 42)
+    btn.BackgroundTransparency = 0.1
+    btn.BorderSizePixel = 0
+    btn.Text = "🛠️ DEV MODE: OFF"
+    btn.TextScaled = true
+    btn.Font = Enum.Font.GothamBlack
+    btn.TextColor3 = Color3.fromRGB(200, 210, 225)
+    btn.ZIndex = zIndex
+    btn.Parent = parent
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
+
+    local pad = Instance.new("UIPadding", btn)
+    pad.PaddingLeft = UDim.new(0, 10)
+    pad.PaddingRight = UDim.new(0, 10)
+    pad.PaddingTop = UDim.new(0, 6)
+    pad.PaddingBottom = UDim.new(0, 6)
+
+    local st = Instance.new("UIStroke", btn)
+    st.Color = Color3.fromRGB(100, 115, 135)
+    st.Thickness = 2
+    return btn, st
+end
+
+-- 1) Always-visible HUD button (bottom-right corner)
+local hudDevBtn, hudDevStroke = makeDevButton(
+    bottomGui,
+    UDim2.new(1, -18, 1, -18),
+    Vector2.new(1, 1),
+    UDim2.new(0, 185, 0, 44),
+    20
+)
+
+-- 2) Button inside the Ability Loadout Menu header (top-left of panel)
+local menuDevBtn, menuDevStroke = makeDevButton(
+    panel,
+    UDim2.new(0, 16, 0, 10),
+    Vector2.new(0, 0),
+    UDim2.new(0, 185, 0, 40),
+    54
+)
+
+local function updateDevButtons()
+    local label = isDevMode and "⚡ DEV MODE: ON" or "🛠️ DEV MODE: OFF"
+    local bg = isDevMode and Color3.fromRGB(45, 95, 35) or Color3.fromRGB(32, 36, 42)
+    local strokeCol = isDevMode and Color3.fromRGB(255, 215, 55) or Color3.fromRGB(100, 115, 135)
+    local txtCol = isDevMode and Color3.fromRGB(255, 245, 130) or Color3.fromRGB(200, 210, 225)
+
+    for _, pair in ipairs({ {hudDevBtn, hudDevStroke}, {menuDevBtn, menuDevStroke} }) do
+        local b, s = pair[1], pair[2]
+        b.Text = label
+        b.BackgroundColor3 = bg
+        b.TextColor3 = txtCol
+        s.Color = strokeCol
+    end
+end
+
 local function refreshLocks()
     for id, info in pairs(lockCards) do
         local locked = not unlockedSet[id]
@@ -886,16 +951,43 @@ local gardenRemotes = RSsvc:WaitForChild("GardenRemotes", 10)
 if gardenRemotes then
     local sync = gardenRemotes:WaitForChild("GardenSync", 10)
     local req = gardenRemotes:FindFirstChild("RequestGarden")
+    local toggleDev = gardenRemotes:WaitForChild("ToggleDevMode", 10)
+
+    local function onToggleClicked()
+        if toggleDev then
+            toggleDev:FireServer()
+        end
+    end
+    hudDevBtn.MouseButton1Click:Connect(onToggleClicked)
+    menuDevBtn.MouseButton1Click:Connect(onToggleClicked)
+
+    player:GetAttributeChangedSignal("DevMode"):Connect(function()
+        isDevMode = player:GetAttribute("DevMode") == true
+        updateDevButtons()
+    end)
+
     if sync then
         sync.OnClientEvent:Connect(function(state)
             if not state or state.openPicker then return end  -- ignore picker-only messages
+            if state.devMode ~= nil then
+                isDevMode = state.devMode == true
+                updateDevButtons()
+            end
             unlockedSet = {}
             if state and state.unlocked then
                 for id, v in pairs(state.unlocked) do unlockedSet[id] = v and true or nil end
             end
-            -- if an equipped ability got locked (e.g. data reset), unequip it
+            -- if an equipped ability got locked (e.g. switching back to regular mode), unequip it
+            local anyEquipped = false
             for slot, id in pairs(equipped) do
-                if id and not unlockedSet[id] then equipped[slot] = nil end
+                if id and not unlockedSet[id] then
+                    equipped[slot] = nil
+                elseif id then
+                    anyEquipped = true
+                end
+            end
+            if not anyEquipped and unlockedSet["vine_grapple"] then
+                equipped[1] = "vine_grapple"
             end
             _G.EquippedAbilities = equipped
             refreshLocks()
@@ -903,6 +995,7 @@ if gardenRemotes then
     end
     if req then req:FireServer() end
 end
+updateDevButtons()
 refreshLocks()
 
 print("AbilityMenu loaded with " .. #ALL_ABILITIES .. " abilities!")

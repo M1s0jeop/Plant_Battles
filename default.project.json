@@ -180,6 +180,9 @@
         "RequestGarden": {
           "$className": "RemoteEvent"
         },
+        "ToggleDevMode": {
+          "$className": "RemoteEvent"
+        },
         "WaterPlant": {
           "$className": "RemoteEvent"
         }

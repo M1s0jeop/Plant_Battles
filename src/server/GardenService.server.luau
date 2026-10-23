@@ -15,13 +15,29 @@ local WaterPlant = Remotes:WaitForChild("WaterPlant")
 local GardenSync = Remotes:WaitForChild("GardenSync")
 local RequestGarden = Remotes:WaitForChild("RequestGarden")
 local ClaimGarden = Remotes:WaitForChild("ClaimGarden")
+local ToggleDevMode = Remotes:FindFirstChild("ToggleDevMode")
+if not ToggleDevMode then
+	ToggleDevMode = Instance.new("RemoteEvent")
+	ToggleDevMode.Name = "ToggleDevMode"
+	ToggleDevMode.Parent = Remotes
+end
 
 local store = DSS:GetDataStore("PlantBattles_Garden_v3")
 local NUM_GARDENS = 10
 
 local DATA = {}
+local DEV_SNAPSHOTS = {} -- [userId] = { nectar = number, seeds = table, plants = table, savedAt = number }
 local CLAIMED = {}   -- gardenIndex -> userId
 local plantIdCounter = 0
+
+local function deepCopy(orig)
+	if type(orig) ~= "table" then return orig end
+	local copy = {}
+	for k, v in pairs(orig) do
+		copy[deepCopy(k)] = deepCopy(v)
+	end
+	return copy
+end
 
 -- garden soil beds + bounds
 local GARDEN_BEDS = {}
@@ -90,7 +106,7 @@ local function computeUnlocked(pdata)
 	for _, id in ipairs(Prog.STARTER_ABILITIES or {}) do
 		set[id] = true
 	end
-	if DEBUG_UNLOCK_ALL then
+	if DEBUG_UNLOCK_ALL or pdata.devMode then
 		for _, data in pairs(Prog.PLANTS) do
 			for _, id in ipairs(data.abilities) do set[id] = true end
 		end
@@ -339,6 +355,7 @@ local function syncToClient(player)
 		bounds = pdata.garden and bedBounds(pdata.garden) or nil,
 		unlocked = computeUnlocked(pdata),
 		claimedGardens = claimedStatus,
+		devMode = pdata.devMode == true,
 	})
 	refreshPlantVisuals(player)
 end
@@ -367,7 +384,9 @@ end
 local function saveData(player)
 	local pdata = DATA[player.UserId]
 	if not pdata then return end
-	local toSave = { seeds = pdata.seeds, plants = pdata.plants }
+	-- If the player is in Dev Mode, persist their real pre-dev snapshot instead of temporary testing items
+	local snap = DEV_SNAPSHOTS[player.UserId]
+	local toSave = snap and { seeds = snap.seeds, plants = snap.plants } or { seeds = pdata.seeds, plants = pdata.plants }
 	pcall(function() store:SetAsync("u_" .. player.UserId, toSave) end)
 end
 
@@ -421,14 +440,18 @@ PlantSeed.OnServerEvent:Connect(function(player, plantName, x, z)
 		end
 	end
 
-	pdata.seeds[plantName] = pdata.seeds[plantName] - 1
-	if pdata.seeds[plantName] <= 0 then pdata.seeds[plantName] = nil end
+	if not pdata.devMode then
+		pdata.seeds[plantName] = pdata.seeds[plantName] - 1
+		if pdata.seeds[plantName] <= 0 then pdata.seeds[plantName] = nil end
+	end
 	plantIdCounter += 1
 	local fx, fz = worldToFrac(pdata.garden, x, z)
+	local thresholds = Prog.getThresholds(plantName)
+	local initialGrowth = pdata.devMode and ((thresholds and thresholds[Prog.MAX_TIER]) or 999999) or 0
 	table.insert(pdata.plants, {
 		id = "p" .. plantIdCounter .. "_" .. player.UserId,
 		plant = plantName,
-		growth = 0,
+		growth = initialGrowth,
 		fx = fx,
 		fz = fz,
 	})
@@ -492,6 +515,65 @@ ClaimGarden.OnServerEvent:Connect(function(player, index)
 	end
 end)
 
+-- ===== Developer Testing Mode Toggle =====
+-- Switches between full Dev Mode (all abilities unlocked, $999,999 Nectar, 10x of every seed, max-stage plants)
+-- and Regular Mode (restores exact normal player money, seeds, plants, and stage locks).
+ToggleDevMode.OnServerEvent:Connect(function(player)
+	local pdata = DATA[player.UserId]
+	if not pdata then return end
+
+	local ls = player:FindFirstChild("leaderstats")
+	local nectar = ls and ls:FindFirstChild("Nectar")
+
+	if not pdata.devMode then
+		-- Snapshot normal player state before entering Dev Mode
+		DEV_SNAPSHOTS[player.UserId] = {
+			nectar = nectar and nectar.Value or 150,
+			seeds = deepCopy(pdata.seeds or {}),
+			plants = deepCopy(pdata.plants or {}),
+			savedAt = tick(),
+		}
+		pdata.devMode = true
+		player:SetAttribute("DevMode", true)
+
+		if nectar then
+			nectar.Value = 999999
+		end
+
+		-- Grant 10 of every plant seed in the game
+		pdata.seeds = {}
+		for plantName, _ in pairs(Prog.PLANTS) do
+			pdata.seeds[plantName] = 10
+		end
+
+		-- Max out growth on any currently planted plants to Stage 3
+		for _, pl in ipairs(pdata.plants) do
+			local thresholds = Prog.getThresholds(pl.plant)
+			pl.growth = (thresholds and thresholds[Prog.MAX_TIER]) or 999999
+		end
+	else
+		-- Restore normal player state
+		local snap = DEV_SNAPSHOTS[player.UserId]
+		DEV_SNAPSHOTS[player.UserId] = nil
+		pdata.devMode = false
+		player:SetAttribute("DevMode", false)
+
+		if snap then
+			if nectar then
+				nectar.Value = snap.nectar
+			end
+			pdata.seeds = snap.seeds or {}
+			local elapsed = math.max(0, math.floor(tick() - (snap.savedAt or tick())))
+			pdata.plants = snap.plants or {}
+			for _, pl in ipairs(pdata.plants) do
+				pl.growth = (pl.growth or 0) + elapsed
+			end
+		end
+	end
+
+	syncToClient(player)
+end)
+
 -- Claim ProximityPrompts on each garden bed
 local claimPrompts = {}
 do
@@ -547,6 +629,7 @@ Players.PlayerRemoving:Connect(function(player)
 		end
 	end
 	DATA[player.UserId] = nil
+	DEV_SNAPSHOTS[player.UserId] = nil
 end)
 game:BindToClose(function() for _, p in ipairs(Players:GetPlayers()) do saveData(p) end end)
 task.spawn(function() while true do task.wait(120); for _, p in ipairs(Players:GetPlayers()) do saveData(p) end end end)

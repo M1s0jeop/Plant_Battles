@@ -19,8 +19,18 @@ local Debris = game:GetService("Debris")
 local TweenService = game:GetService("TweenService")
 
 local Abilities = RS:WaitForChild("Abilities")
-local KiwiToss = Abilities:WaitForChild("KiwiToss")
-local KiwiSplat = Abilities:WaitForChild("KiwiSplat")
+local KiwiToss = Abilities:FindFirstChild("KiwiToss")
+if not KiwiToss then
+	KiwiToss = Instance.new("RemoteEvent")
+	KiwiToss.Name = "KiwiToss"
+	KiwiToss.Parent = Abilities
+end
+local KiwiSplat = Abilities:FindFirstChild("KiwiSplat")
+if not KiwiSplat then
+	KiwiSplat = Instance.new("RemoteEvent")
+	KiwiSplat.Name = "KiwiSplat"
+	KiwiSplat.Parent = Abilities
+end
 
 -- Config
 local COOLDOWN = 7
