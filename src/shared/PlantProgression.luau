@@ -99,7 +99,7 @@ M.PLANTS = {
 		icon = "🍄", rarity = "Rare", radius = 2.7,
 		color = Color3.fromRGB(180, 80, 90),
 		stageTimes = { 0, 720, 2100 }, -- 12m for Stage 2, 35m for Stage 3
-		abilities = { "mushroom_cloud", "spore_guillotine" },
+		abilities = { "mushroom_cloud", "spore_guillotine", "puff_mine" },
 	},
 	["Walnut"] = {
 		icon = "🌰", rarity = "Rare", radius = 3.0,

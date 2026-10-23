@@ -102,6 +102,12 @@
         "PeelThrow": {
           "$className": "RemoteEvent"
         },
+        "PlacePuffMine": {
+          "$className": "RemoteEvent"
+        },
+        "PuffMineDistort": {
+          "$className": "RemoteEvent"
+        },
         "PomegranateThrow": {
           "$className": "RemoteEvent"
         },

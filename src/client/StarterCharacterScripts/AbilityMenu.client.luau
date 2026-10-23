@@ -228,6 +228,15 @@ local ALL_ABILITIES = {
         plant = "Mushroom",
     },
     {
+        id = "puff_mine",
+        name = "Puff Mine",
+        icon = "🍄",
+        description = "Place a mushroom mine that slowly swells over time, expanding its trigger and blast radius. Pops when damaged or stepped on by enemies, blasting a dizzying spore mist that drifts in the wind for 4 seconds. Victims take damage, suffer trippy screen distortion, and are marked with a red outline visible through invisibility for 3 seconds. Holds up to 3 charges (10s recharge).",
+        color = Color3.fromRGB(180, 75, 215),
+        cooldown = 10,
+        plant = "Mushroom",
+    },
+    {
         id = "peel_trap",
         name = "Peel Trap",
         icon = "💥",
@@ -767,11 +776,14 @@ RunService.Heartbeat:Connect(function()
         if abName and ABILITY_DICT[abName] then
             local ab = ABILITY_DICT[abName]
             s.iconLabel.Text = ab.icon
-            s.nameLabel.Text = ab.name
-            s.nameLabel.TextColor3 = ab.color
-            
             _G.AbilityCooldowns = _G.AbilityCooldowns or {}
             local cdInfo = _G.AbilityCooldowns[abName]
+            if cdInfo and cdInfo.charges ~= nil then
+                s.nameLabel.Text = ab.name .. " (" .. cdInfo.charges .. "/3)"
+            else
+                s.nameLabel.Text = ab.name
+            end
+            s.nameLabel.TextColor3 = ab.color
             if cdInfo then
                 local rem = cdInfo.cd - (tick() - cdInfo.lastUsed)
                 if rem > 0 then
